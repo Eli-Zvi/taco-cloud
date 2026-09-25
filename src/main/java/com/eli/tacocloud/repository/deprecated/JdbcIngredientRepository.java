@@ -1,4 +1,4 @@
-package com.eli.tacocloud.repository;
+package com.eli.tacocloud.repository.deprecated;
 
 import com.eli.tacocloud.model.Ingredient;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -9,8 +9,9 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
+@Deprecated
 @Repository
-public class JdbcIngredientRepository implements IngredientRepository{
+public class JdbcIngredientRepository implements OldIngredientRepository {
 
     private JdbcTemplate jdbcTemplate;
 
