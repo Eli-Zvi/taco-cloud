@@ -4,7 +4,10 @@ import com.eli.tacocloud.model.Ingredient;
 import com.eli.tacocloud.model.Taco;
 import com.eli.tacocloud.model.TacoOrder;
 import com.eli.tacocloud.model.Ingredient.Type;
+import com.eli.tacocloud.repository.IngredientRepository;
+import com.eli.tacocloud.repository.JdbcIngredientRepository;
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,28 +24,20 @@ import java.util.stream.Collectors;
 @Controller
 @RequestMapping("/design")
 @SessionAttributes("tacoOrder")
+@RequiredArgsConstructor
 public class DesignTacoController {
+
+    private final IngredientRepository ingredientRepository;
 
     @ModelAttribute
     public void addIngredientsToModel(Model model){
-        List<Ingredient> ingredients = Arrays.asList(
-                new Ingredient("FLTO", "Flour Tortilla", Type.WRAP),
-                new Ingredient("COTO", "Corn Tortilla", Type.WRAP),
-                new Ingredient("GRBF", "Ground Beef", Type.PROTEIN),
-                new Ingredient("CARN", "Carnitas", Type.PROTEIN),
-                new Ingredient("TMTO", "Diced Tomatoes", Type.VEGGIES),
-                new Ingredient("LETC", "Lettuce", Type.VEGGIES),
-                new Ingredient("CHED", "CHEDDAR", Type.CHEESE),
-                new Ingredient("JACK", "Monterrey Jack", Type.CHEESE),
-                new Ingredient("SLSA", "Salsa", Type.SAUCE),
-                new Ingredient("SRCR", "Sour Cream", Type.SAUCE)
-        );
+        Iterable<Ingredient> ingredients = ingredientRepository.findAll();
 
         Type [] types = Ingredient.Type.values();
 
         for(Type type : types){
             model.addAttribute(type.toString().toLowerCase(),
-                    filterByType(ingredients, type));
+                    filterByType((List<Ingredient>) ingredients, type));
         }
     }
 
