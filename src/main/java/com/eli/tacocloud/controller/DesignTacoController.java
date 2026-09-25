@@ -5,19 +5,14 @@ import com.eli.tacocloud.model.Taco;
 import com.eli.tacocloud.model.TacoOrder;
 import com.eli.tacocloud.model.Ingredient.Type;
 import com.eli.tacocloud.repository.IngredientRepository;
-import com.eli.tacocloud.repository.JdbcIngredientRepository;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
-
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Arrays;
 import java.util.List;
-
 import java.util.stream.Collectors;
 
 @Slf4j

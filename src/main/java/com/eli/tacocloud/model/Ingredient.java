@@ -1,6 +1,8 @@
 package com.eli.tacocloud.model;
 
-public record Ingredient(String id, String name, Type type) {
+import org.springframework.data.annotation.Id;
+
+public record Ingredient(@Id String id, String name, Type type) {
 
     public enum Type{
         WRAP, PROTEIN, VEGGIES, CHEESE, SAUCE
