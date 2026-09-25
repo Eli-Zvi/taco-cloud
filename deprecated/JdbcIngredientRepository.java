@@ -2,7 +2,6 @@ package com.eli.tacocloud.repository.deprecated;
 
 import com.eli.tacocloud.model.Ingredient;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Repository;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -10,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Deprecated
-@Repository
+//@Repository
 public class JdbcIngredientRepository implements OldIngredientRepository {
 
     private JdbcTemplate jdbcTemplate;
