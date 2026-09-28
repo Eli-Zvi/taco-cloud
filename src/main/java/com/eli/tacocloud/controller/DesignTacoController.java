@@ -36,7 +36,6 @@ public class DesignTacoController {
         }
     }
 
-
     @ModelAttribute(name="taco")
     public Taco createTaco(){
         return new Taco();
@@ -55,7 +54,7 @@ public class DesignTacoController {
     private Iterable<Ingredient> filterByType(List<Ingredient> ingredients, Ingredient.Type type){
         return ingredients
                 .stream()
-                .filter(x -> x.type().equals(type))
+                .filter(x -> x.getType().equals(type))
                 .collect(Collectors.toList());
     }
 
