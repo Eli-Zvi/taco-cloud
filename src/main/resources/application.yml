@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: taco-cloud
+
+  h2:
+    console:
+      enabled: true
+
+  datasource:
+    generate-unique-name: false
+    name: tacocloud
+
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: <client-id>
+            client-secret: <secret>
+
+logging:
+  level:
+    org.springframework.jdbc.core: DEBUG
+    org.springframework.data.jdbc.core: DEBUG
+
